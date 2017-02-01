@@ -277,7 +277,8 @@ public class CodingBat {
 
     /*
     in3050
-    Given 2 int values, return true if they are both in the range 30..40 inclusive, or they are both in the range 40..50 inclusive.
+    Given 2 int values, return true if they are both in the range 30..40 inclusive, or they are both
+    in the range 40..50 inclusive.
     */
     public boolean in3050(int a, int b) {
         if ((a >= 30 && a <= 40) && (b >= 30 && b <= 40)) {
@@ -291,7 +292,8 @@ public class CodingBat {
 
     /*
     max1020
-    Given 2 positive int values, return the larger value that is in the range 10..20 inclusive, or return 0 if neither is in that range.
+    Given 2 positive int values, return the larger value that is in the range 10..20 inclusive, or return 0 if neither
+    is in that range.
     */
     public int max1020(int a, int b) {
         if (b > a) {
@@ -310,7 +312,48 @@ public class CodingBat {
     }
 
     /*
-    
+    stringE
+    Return true if the given string contains between 1 and 3 'e' chars.
     */
+    public boolean stringE(String str) {
+        int counter = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'e') {
+                counter++;
+            }
+        }
+        return (counter >= 1 && counter <= 3);
+    }
+
+    /*
+    lastDigit
+    Given two non-negative int values, return true if they have the same last digit, such as with 27 and 57. Note that
+    the % "mod" operator computes remainders, so 17 % 10 is 7.
+    */
+    public boolean lastDigit(int a, int b) {
+        if (a%10 == b%10) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*
+    endUp
+    Given a string, return a new string where the last 3 chars are now in upper case. If the string has less
+    than 3 chars, uppercase whatever is there. Note that str.toUpperCase() returns the uppercase version of a string.
+    */
+    public String endUp(String str) {
+        if (str.length() <= 2) {
+            return str.toUpperCase();
+        }
+        int cut = str.length() - 3;
+
+        String front = str.substring(0, cut);
+        String end3 = str.substring(cut);
+
+        return front + end3.toUpperCase();
+    }
+
 
 }
