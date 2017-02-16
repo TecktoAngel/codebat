@@ -319,10 +319,121 @@ public class String1 {
     }
 
     /*
-
+    minCat
+    Given two strings, append them together (known as "concatenation") and return the result. However,
+    if the strings are different lengths, omit chars from the longer string so it is the same length
+    as the shorter string. So "Hello" and "Hi" yield "loHi". The strings may be any length.
     */
+    public String minCat(String a, String b) {
+        if (a.length() >= b.length()) {
+            return (a.substring(a.length() - b.length()) + b);
+        } else {
+            return (a + b.substring(b.length() - a.length()));
+        }
+    }
 
+    /*
+    extraFront
+    Given a string, return a new string made of 3 copies of the first 2 chars of the original string.
+    The string may be any length. If there are fewer than 2 chars, use whatever is there.
+    */
+    public String extraFront(String str) {
+        String twoFirstChars = "";
 
+        if (str.length() >= 3) {
+            twoFirstChars = str.substring(0, 2);
+        } else {
+            twoFirstChars = str;
+        }
+        return twoFirstChars + twoFirstChars + twoFirstChars;
+    }
 
+    /*
+    without2
+    Given a string, if a length 2 substring appears at both its beginning and end, return a string without
+    the substring at the beginning, so "HelloHe" yields "lloHe". The substring may overlap with itself,
+    so "Hi" yields "". Otherwise, return the original string unchanged.
+    */
+    public String without2(String str) {
+        if (str.length() >= 2) {
+            if (str.substring(0, 2).equals(str.substring(str.length() - 2))) {
+                return str.substring(2);
+            }
+        }
+        return str;
+    }
 
+    /*
+    deFront
+    Given a string, return a version without the first 2 chars. Except keep the first char if it is 'a'
+    and keep the second char if it is 'b'. The string may be any length. Harder than it looks.
+    */
+    public String deFront(String str) {
+        if(str.length() == 1 && str.charAt(0) != 'a')
+            return "";
+
+        if(str.length() >= 2) {
+            if(str.charAt(0) != 'a' && str.charAt(1) != 'b') {
+                return str.substring(2);
+            } else if(str.charAt(0) != 'a') {
+                return str.substring(1);
+            } else if(str.charAt(1) != 'b') {
+                return "a" + str.substring(2);
+            }
+        }
+        return str;
+    }
+
+    /*
+    startWord
+    Given a string and a second "word" string, we'll say that the word matches the string if it appears at the
+    front of the string, except its first char does not need to match exactly. On a match, return
+    the front of the string, or otherwise return the empty string. So, so with the string "hippo"
+    the word "hi" returns "hi" and "xip" returns "hip". The word will be at least length 1.
+    */
+    public String startWord(String str, String word) {
+        String wordWithoutFirst = word.substring(1);
+
+        if (str.startsWith(wordWithoutFirst, 1)) {
+            return str.substring(0, word.length());
+        } else {
+            return "";
+        }
+    }
+
+    /*
+    withoutX
+    Given a string, if the first or last chars are 'x', return the string without those 'x' chars,
+    and otherwise return the string unchanged.
+    */
+    public String withoutX(String str) {
+        if (str.length() > 0 && str.charAt(0) == 'x') {
+            str = str.substring(1);
+        }
+        if (str.length() > 0 && str.charAt(str.length()-1) == 'x') {
+            str = str.substring(0, str.length()-1);
+        }
+        return str;
+    }
+
+    /*
+    withoutX2
+    Given a string, if one or both of the first 2 chars is 'x', return the string without those 'x' chars,
+    and otherwise return the string unchanged. This is a little harder than it looks.
+    */
+    public String withoutX2(String str) {
+        if (str.length() == 1 && str.charAt(0) == 'x') {
+            return "";
+        }
+        if (str.length() >= 2) {
+            if (str.charAt(0) == 'x' && str.charAt(1) == 'x') {
+                return str.substring(2);
+            } else if (str.charAt(0) == 'x') {
+                return str.substring(1);
+            } else if (str.charAt(1) == 'x') {
+                return str.charAt(0) + str.substring(2);
+            }
+        }
+        return str;
+    }
 }
